@@ -15,8 +15,3 @@ criterion.workspace = true
 name = "{{project-name}}-bench"
 path = "benches/benchmarks.rs"
 harness = false
-
-[[bench]]
-name = "{{project-name}}-bench-criterion"
-path = "benches/benchmarks-criterion.rs"
-harness = false

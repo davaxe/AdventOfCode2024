@@ -15,8 +15,3 @@ criterion.workspace = true
 name = "day-01-bench"
 path = "benches/benchmarks.rs"
 harness = false
-
-[[bench]]
-name = "day-01-bench-criterion"
-path = "benches/benchmarks-criterion.rs"
-harness = false

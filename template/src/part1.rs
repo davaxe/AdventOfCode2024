@@ -7,7 +7,8 @@ mod tests {
     use super::*;
 
     #[test]
-    #[ignore]
+    // TODO: Implement test, and remove ignore.
+    #[ignore = "Not implemented"]
     fn test_task() {
         let input = include_str!("../example.txt");
         let result = task(input);
