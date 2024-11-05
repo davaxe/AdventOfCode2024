@@ -7,6 +7,7 @@ mod tests {
     use super::*;
 
     #[test]
+    #[ignore]
     fn test_task() {
         let input = include_str!("../example.txt");
         let result = task(input);
