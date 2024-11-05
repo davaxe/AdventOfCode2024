@@ -1,4 +1,5 @@
-use day_01::{part1, part2}; // FIXME: Change day_01 to the correct day
+use day_01::{part1, part2};
+
 fn main() {
     // Output results for both parts
     println!(
