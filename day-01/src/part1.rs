@@ -1,3 +1,4 @@
+#[must_use]
 pub fn task(_input: &str) -> Option<String> {
     None
 }
