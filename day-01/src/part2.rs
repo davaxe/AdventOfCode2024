@@ -1,18 +1,14 @@
-/// Processes the input and returns the result as a string.
-///
-/// # Panics
-///
-/// This function will panic if the input lines do not contain at least two
-/// whitespace-separated numbers.
 #[must_use]
 pub fn task(input: &str) -> Option<String> {
-    let mut left = vec![];
-    let mut right = vec![];
-    input.lines().for_each(|line| {
+    let mut left: Vec<usize> = vec![];
+    let mut right: Vec<usize> = vec![];
+    for line in input.lines() {
         let mut numbers = line.split_whitespace();
-        left.push(numbers.next().unwrap().parse::<usize>().unwrap());
-        right.push(numbers.next().unwrap().parse::<usize>().unwrap());
-    });
+        let first = numbers.next()?.parse().ok()?;
+        let second = numbers.next()?.parse().ok()?;
+        left.push(first);
+        right.push(second);
+    }
 
     Some(
         left.iter()
