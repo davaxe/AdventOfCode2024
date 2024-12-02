@@ -1,18 +1,20 @@
+use std::collections::HashMap;
+
 #[must_use]
 pub fn task(input: &str) -> Option<String> {
     let mut left: Vec<usize> = vec![];
-    let mut right: Vec<usize> = vec![];
+    let mut right: HashMap<usize, usize> = HashMap::new();
     for line in input.lines() {
         let mut numbers = line.split_whitespace();
         let first = numbers.next()?.parse().ok()?;
         let second = numbers.next()?.parse().ok()?;
         left.push(first);
-        right.push(second);
+        right.entry(second).and_modify(|n| *n += 1).or_insert(1);
     }
 
     Some(
         left.iter()
-            .map(|n| right.iter().filter(|&m| m == n).count() * n)
+            .map(|n| right.get(n).unwrap_or(&0) * n)
             .sum::<usize>()
             .to_string(),
     )
