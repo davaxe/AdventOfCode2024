@@ -4,9 +4,16 @@
 # for simplicity we are compiling and testing everything on the Ubuntu environment only.
 # For multi-OS testing see the `cross.yml` workflow.
 
-on: [push, pull_request]
+# Only on master branch (push and pull requests)
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
-name: Quickstart
+name: rust_workflow
 
 jobs:
   check:

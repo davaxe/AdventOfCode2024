@@ -1,0 +1,64 @@
+#[must_use]
+pub fn task(input: &str) -> Option<String> {
+    let result = input
+        .lines()
+        .filter_map(|report| {
+            is_safe(
+                report
+                    .split_whitespace()
+                    .filter_map(|number| number.parse().ok()),
+            )
+        })
+        .count();
+
+    Some(result.to_string())
+}
+
+fn is_safe<T>(numbers: T) -> Option<()>
+where
+    T: IntoIterator<Item = i32>,
+{
+    enum State {
+        Unknown,
+        Increasing,
+        Decreasing,
+    }
+    let mut status = State::Unknown;
+    let mut numbers_iter = numbers.into_iter();
+    let mut current = numbers_iter.next()?;
+    for next in numbers_iter {
+        match status {
+            State::Unknown if (current + 1..current + 4).contains(&next) => {
+                status = State::Increasing;
+                current = next;
+            }
+            State::Unknown if (current - 3..current).contains(&next) => {
+                status = State::Decreasing;
+                current = next;
+            }
+            State::Increasing if (current + 1..current + 4).contains(&next) => {
+                current = next;
+            }
+            State::Decreasing if (current - 3..current).contains(&next) => {
+                current = next;
+            }
+            _ => {
+                return None;
+            }
+        }
+    }
+    Some(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_task() {
+        let input = include_str!("../example.txt");
+        let result = task(input);
+        assert!(result.is_some());
+        assert_eq!(result.unwrap(), "2");
+    }
+}
