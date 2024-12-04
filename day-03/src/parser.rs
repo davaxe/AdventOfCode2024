@@ -5,8 +5,7 @@ use nom::multi::many0;
 use nom::sequence::{delimited, preceded, separated_pair};
 use nom::IResult;
 
-// Part 1
-
+// ---- Part 1 -----------------------------------------------------------------
 type Multiplication = (i32, i32);
 
 fn multiplication(input: &str) -> IResult<&str, Multiplication> {
@@ -34,9 +33,7 @@ pub fn multiplications(input: &str) -> IResult<&str, Vec<Multiplication>> {
     Ok(("", multiplications.into_iter().flatten().collect()))
 }
 
-// Part 2
-
-#[derive(Debug, PartialEq)]
+// ---- Part 2 -----------------------------------------------------------------
 pub enum Operation {
     /// Disable future multiplications
     Disable,
