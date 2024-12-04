@@ -10,6 +10,7 @@ pub fn task(input: &str) -> Option<String> {
 
     let result = (0..height)
         .cartesian_product(0..width)
+        .filter(|(x, y)| map[*y][*x] == 'X')
         .flat_map(|(x, y)| find_words_in_directions(&map, x, y, 4))
         .filter(|word| word == "XMAS")
         .count();
