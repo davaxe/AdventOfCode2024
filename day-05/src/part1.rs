@@ -2,7 +2,8 @@ use std::collections::{HashMap, HashSet};
 
 #[must_use]
 pub fn task(input: &str) -> Option<String> {
-    let mut parts = input.split("\r\n\r\n");
+    let input = input.replace("\r\n", "\n");
+    let mut parts = input.split("\n\n");
     let rules_it = parts.next()?;
     let page_orders: Vec<Vec<i32>> = parts
         .next()?
