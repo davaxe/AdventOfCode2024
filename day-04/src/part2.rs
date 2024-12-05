@@ -14,6 +14,7 @@ pub fn task(input: &str) -> Option<String> {
 
     (0..height)
         .cartesian_product(0..width)
+        .filter(|(x, y)| map[*y][*x] == 'M')
         .flat_map(|(x, y)| {
             find_matching_words_in_directions(&map, x, y, "MAS")
                 .map(move |(dx, dy, _)| (x as i128 + dx, y as i128 + dy))
