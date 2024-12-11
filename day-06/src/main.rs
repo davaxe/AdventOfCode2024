@@ -9,7 +9,7 @@ fn main() {
     );
     println!(
         "Part 2:\n  {}",
-        part2::task(include_str!("../input.txt"))
+        part2::task(include_str!("../input.txt"), 130, 130)
             .unwrap_or("No solution found".to_string())
     );
 }

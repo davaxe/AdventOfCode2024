@@ -19,7 +19,7 @@ fn part2_benchmark(c: &mut Criterion) {
     group.bench_with_input(
         BenchmarkId::new("part2", "input"),
         &input,
-        |b, input| b.iter(|| part2::task(input)),
+        |b, input| b.iter(|| part2::task(input, 130, 130)),
     );
 }
 
