@@ -12,10 +12,10 @@ pub fn task(input: &str) -> Option<String> {
         .char_indices()
         .filter_map(|(i, c)| match c.to_digit(10) {
             Some(x) if i % 2 == 0 => {
-                Some(iter::repeat(MemorySlot::Used(i / 2)).take(x as usize))
+                Some(iter::repeat_n(MemorySlot::Used(i / 2), x as usize))
             }
             Some(x) if i % 2 != 0 => {
-                Some(iter::repeat(MemorySlot::Free).take(x as usize))
+                Some(iter::repeat_n(MemorySlot::Free, x as usize))
             }
             _ => None,
         })
