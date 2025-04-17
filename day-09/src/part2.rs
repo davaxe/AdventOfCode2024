@@ -18,12 +18,12 @@ pub fn task(input: &str) -> Option<String> {
             Some(x) if i % 2 == 0 => {
                 sizes.push(x as usize);
                 index += x as usize;
-                Some(iter::repeat(MemorySlot::Used(i / 2)).take(x as usize))
+                Some(iter::repeat_n(MemorySlot::Used(i / 2), x as usize))
             }
             Some(x) if i % 2 != 0 => {
                 free_slots.push((index, x as usize));
                 index += x as usize;
-                Some(iter::repeat(MemorySlot::Free).take(x as usize))
+                Some(iter::repeat_n(MemorySlot::Free, x as usize))
             }
             _ => None,
         })
@@ -88,7 +88,6 @@ fn defrag(
             already_moved.insert(id);
         } else {
             i -= 1;
-            continue;
         }
     }
 }
